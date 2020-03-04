@@ -27,7 +27,7 @@ func main() {
 
 	
 
-	http.Handle("/static/", //final url can be anything
+	http.Handle(path.Dir(filename)+"/static/", //final url can be anything
 		http.StripPrefix("/static/",
 			http.FileServer(http.Dir("static")))) //Go looks in the relative static directory first, then matches it to a
 			
