@@ -23,7 +23,7 @@ func main() {
 	welcome := Welcome{"Anonymous", time.Now().Format(time.Stamp)}
 
 	
-	templates := template.Must(template.ParseFiles(path.Dir(filename)+"templates/welcome.html"))
+	templates := template.Must(template.ParseFiles(path.Dir(filename)+"/templates/welcome.html"))
 
 	
 
