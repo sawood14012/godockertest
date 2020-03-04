@@ -27,9 +27,9 @@ func main() {
 
 	
 
-	http.Handle(path.Dir(filename)+"/static/", //final url can be anything
+	http.Handle("/static/", //final url can be anything
 		http.StripPrefix("/static/",
-			http.FileServer(http.Dir("static")))) //Go looks in the relative static directory first, then matches it to a
+			http.FileServer(http.Dir(path.Dir(filename)+"/static")))) //Go looks in the relative static directory first, then matches it to a
 			
 	http.HandleFunc("/" , func(w http.ResponseWriter, r *http.Request) {
 
@@ -44,5 +44,5 @@ func main() {
 	})
 
 	
-	fmt.Println(http.ListenAndServe(":8080", nil));
+	fmt.Println(http.ListenAndServe(":8081", nil));
 }
