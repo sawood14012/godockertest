@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"time"
 	"html/template"
+	"path"
+ 	"runtime"
 )
 
 //Create a struct that holds information to be displayed in our HTML file
@@ -14,11 +16,14 @@ type Welcome struct {
 
 //Go application entrypoint
 func main() {
-	
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		fmt.Println("No caller information")
+	  }
 	welcome := Welcome{"Anonymous", time.Now().Format(time.Stamp)}
 
 	
-	templates := template.Must(template.ParseFiles("templates/welcome.html"))
+	templates := template.Must(template.ParseFiles(path.Dir(filename)+"templates/welcome.html"))
 
 	
 
